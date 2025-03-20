@@ -1,0 +1,131 @@
+<logo/>
+<h1 class="text-center py-2 mb-2 text-2xl">Ingresa tus datos</h1>
+
+<form [formGroup]="formRegister" novalidate class="space-y-4" (ngSubmit)="register()">
+  <div>
+    <div class="relative">
+      <label class="font-medium text-gray-700">Nombre</label>
+      <input formControlName="name" placeholder="Ingresa tu nombre" type="text" name="name"
+        class="form-control" />
+    </div>
+    @if (name.touched && name.invalid) {
+      @if (name.hasError('required')) {
+        <p class="font-medium text-red-500 text-xs mt-1 ml-1">
+          Este campo es obligatorio
+        </p>
+      }
+    }
+  </div>
+  <div>
+    <div class="relative">
+      <label class="font-medium text-gray-700">Email</label>
+      <input formControlName="email" placeholder="Ingresa tu correo" type="email" name="email"
+        class="form-control" />
+    </div>
+    @if (email.touched && email.invalid) {
+      @if (email.hasError('required')) {
+        <p class="font-medium text-red-500 text-xs mt-1 ml-1">
+          Este campo es obligatorio
+        </p>
+      }
+      @if (email.hasError('email')) {
+        <p class="font-medium text-red-500 text-xs mt-1 ml-1">
+          Ingresa un correo válido
+        </p>
+      }
+    }
+  </div>
+  <div>
+    <div class="relative">
+      <label class="font-medium text-gray-700">Documento</label>
+      <input formControlName="document" placeholder="Ingresa tu documento" type="text" name="document"
+        class="form-control" />
+    </div>
+    @if (document.touched && document.invalid) {
+      @if (document.hasError('required')) {
+        <p class="font-medium text-red-500 text-xs mt-1 ml-1">
+          Este campo es obligatorio
+        </p>
+      }
+      @if (document.hasError('pattern')) {
+        <p class="font-medium text-red-500 text-xs mt-1 ml-1">
+          Ingresa un documento válido (7-10 dígitos)
+        </p>
+      }
+    }
+  </div>
+  <div>
+    <div class="relative">
+      <label class="font-medium text-gray-700">Teléfono</label>
+      <input formControlName="phone" placeholder="Ingresa tu teléfono" type="text" name="phone"
+        class="form-control" />
+    </div>
+    @if (phone.touched && phone.invalid) {
+      @if (phone.hasError('required')) {
+        <p class="font-medium text-red-500 text-xs mt-1 ml-1">
+          Este campo es obligatorio
+        </p>
+      }
+      @if (phone.hasError('pattern')) {
+        <p class="font-medium text-red-500 text-xs mt-1 ml-1">
+          Ingresa un número válido (debe empezar con 3, máximo 10 caracteres)
+        </p>
+      }
+    }
+  </div>
+  <div>
+    <div class="relative">
+      <label class="font-medium text-gray-700">Contraseña</label>
+      <input formControlName="password" placeholder="Ingresa tu contraseña" [type]="showPassword ? 'text' : 'password'"
+        class="w-full form-control pr-10" />
+      <button type="button" class="absolute right-2 top-10 transform -translate-y-1/2 p-2"
+        (click)="showPassword = !showPassword">
+        <fa-icon [icon]="showPassword ? faEye : faEyeSlash"></fa-icon>
+      </button>
+    </div>
+    @if (password.touched && password.invalid) {
+      @if (password.hasError('required')) {
+        <p class="font-medium text-red-500 text-xs mt-1 ml-1">
+          Este campo es obligatorio
+        </p>
+      }
+      @if (password.hasError('minlength')) {
+        <p class="font-medium text-red-500 text-xs mt-1 ml-1">
+          La contraseña debe tener más de 6 caracteres
+        </p>
+      }
+    }
+  </div>
+  <div>
+    <div class="relative">
+      <label class="font-medium text-gray-700">Confirmar contraseña</label>
+      <input formControlName="confirmPassword" placeholder="Confirma tu contraseña" type="password"
+        class="w-full form-control pr-10" />
+    </div>
+    @if (confirmPassword.touched && confirmPassword.invalid) {
+      @if (confirmPassword.hasError('required')) {
+        <p class="font-medium text-red-500 text-xs mt-1 ml-1">
+          Este campo es obligatorio
+        </p>
+      }
+      @if (confirmPassword.hasError('minlength')) {
+        <p class="font-medium text-red-500 text-xs mt-1 ml-1">
+          La contraseña debe tener más de 6 caracteres
+        </p>
+      }
+    }
+  </div>
+  @if (confirmPassword.touched) {
+    @if (formRegister.hasError('mismatch')) {
+      <p class="font-medium text-red-500 text-xs mt-1 ml-1">
+        Las contraseñas no coinciden
+      </p>
+    }
+  }
+  @if (status === 'failed') {
+    <p class="text-red-500 font-medium text-center">{{errorMessage}}</p>
+  }
+  <div>
+    <app-btn typeBtn="submit" color="success" [loading]="status === 'loading'">Regístrate</app-btn>
+  </div>
+</form>

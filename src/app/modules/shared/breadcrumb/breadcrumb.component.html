@@ -1,0 +1,17 @@
+<div class="mb-2 border-bottom border-gray">
+  <div class="head-title">
+    <div class="left">
+      <h5 class="fw-bold text-xl text-indigo-700">{{ title }}</h5>
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb mb-1">
+          @for (item of routes; track item.name) {
+            <li class="breadcrumb-item fs-7">
+              <a [routerLink]="item.link">{{ item.name }}</a>
+            </li>
+          }
+          <li class="breadcrumb-item active fs-7" aria-current="page">{{ activeRoute }}</li>
+        </ol>
+      </nav>
+    </div>
+  </div>
+</div>

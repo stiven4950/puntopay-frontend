@@ -1,0 +1,17 @@
+<ng-select
+  [items]="suppliers"
+  bindLabel="supplierDescription"
+  bindValue="supplierCode"
+  [(ngModel)]="selectedSupplier"
+  (change)="onSelect($event)"
+  placeholder="Seleccione un proveedor"
+  class="w-full bg-white form-control"
+  appendTo="body"
+>
+  <ng-template ng-option-tmp let-item="item">
+    <div class="flex items-center">
+      <img [src]="item.supplierLogo" class="h-6 w-6 rounded-full mr-2" alt="Logo" />
+      <span>{{ item.supplierDescription }}</span>
+    </div>
+  </ng-template>
+</ng-select>

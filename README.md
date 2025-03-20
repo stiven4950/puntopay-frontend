@@ -1,27 +1,60 @@
-# Puntopay
+# PuntoPay - Frontend
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.1.3.
+## Descripción del Proyecto
 
-## Development server
+PuntoPay es una aplicación web desarrollada en Angular que permite a los usuarios realizar recargas móviles, comprar pines de contenido y ejecutar transacciones bancarias. Este proyecto forma parte de una solución integral que consume los servicios API de Puntored a través de un backend desarrollado en Spring Boot.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+El frontend proporciona una interfaz intuitiva y segura para que los usuarios interactúen con los servicios, permitiendo:
+- Realizar recargas a operadores móviles.
+- Comprar pines de contenido.
+- Consultar transacciones previas.
+- (Opcional) Implementar autenticación de usuario.
 
-## Code scaffolding
+## Tecnologías Utilizadas
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- **Angular 18.1.0** - Framework frontend para la construcción de la interfaz de usuario.
+- **TypeScript** - Lenguaje de programación para una mejor estructuración del código.
+- **Tailwind CSS** - Utilizado para el diseño y estilos.
+- **RxJS** - Manejo de eventos y programación reactiva.
+- **JWT Decode** - Para la decodificación de tokens JWT.
 
-## Build
+## Requisitos Previos
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Antes de ejecutar el proyecto, asegúrate de tener instalado lo siguiente:
+- **Node.js v18.20.4** o superior.
+- **Angular CLI** (Si no lo tienes, instálalo con `npm install -g @angular/cli`).
 
-## Running unit tests
+## Instalación y Ejecución
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Sigue estos pasos para ejecutar el proyecto en tu entorno local:
 
-## Running end-to-end tests
+1. **Clonar el repositorio**
+   ```sh
+   git clone https://github.com/stiven4950/puntopay-frontend.git
+   cd puntopay-frontend
+   ```
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+2. **Instalar dependencias**
+   ```sh
+   npm install
+   ```
 
-## Further help
+3. **Ejecutar el servidor de desarrollo**
+   ```sh
+   ng serve
+   ```
+   Esto iniciará el servidor en `http://localhost:4200/`.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+## Construcción para Producción
+
+Para generar los archivos de producción, ejecuta:
+```sh
+ng build
+```
+Los archivos compilados se encontrarán en la carpeta `dist/`.
+
+## Contacto
+
+Desarrollado por **Omar Stiven Rivera Rocha**  
+**Ingeniero de Software**
+

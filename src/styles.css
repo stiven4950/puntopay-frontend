@@ -1,1 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
+@import "tailwindcss";
+
+.form-control {
+  display: block;
+  width: 100%;
+  background-color: #e0e7ff;
+  padding: 4px 8px;
+  border-radius: 5px;
+}
+
+.form-control:focus {
+  outline: none;
+  box-shadow: -1px -1px 3px #a6b6eb;
+}

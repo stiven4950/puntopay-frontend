@@ -1,0 +1,53 @@
+<div class="w-full sm:w-full md:w-2/5 lg:2/5 bg-white p-6 rounded-lg shadow-md">
+
+  <h1 class="text-center font-bold py-2 text-xl">Recarga tu móvil</h1>
+
+  <form [formGroup]="formRecharge" novalidate class="space-y-4" (ngSubmit)="submit()">
+    <div>
+      <label class="font-medium text-gray-700">Proveedor</label>
+      <app-supplier-select [suppliers]="suppliers" formControlName="productCode"
+        (supplierChange)="onSupplierChange($event)"></app-supplier-select>
+    </div>
+    <div>
+      <div class="relative">
+        <label class="font-medium text-gray-700">Número</label>
+        <input formControlName="number" placeholder="Ingresa tu número" type="text" name="number"
+          class="form-control" />
+      </div>
+      @if (number.touched && number.invalid) {
+        @if (number.hasError('required')) {
+          <p class="font-medium text-red-500 text-xs mt-1 ml-1">
+            Este campo es obligatorio
+          </p>
+        }
+        @if (number.hasError('pattern')) {
+          <p class="font-medium text-red-500 text-xs mt-1 ml-1">
+            Ingresa un número válido (debe empezar con 3, máximo 10 caracteres)
+          </p>
+        }
+      }
+    </div>
+    <div>
+      <div class="relative">
+        <label class="font-medium text-gray-700">Monto</label>
+        <input formControlName="amount" placeholder="Ingresa el monto" type="number" name="amount"
+          class="form-control" />
+      </div>
+      @if (amount.touched && amount.invalid) {
+        @if (amount.hasError('required')) {
+          <p class="font-medium text-red-500 text-xs mt-1 ml-1">
+            Este campo es obligatorio
+          </p>
+        }
+        @if (amount.hasError('min')) {
+          <p class="font-medium text-red-500 text-xs mt-1 ml-1">
+            El monto debe ser mayor a 0
+          </p>
+        }
+      }
+    </div>
+    <div>
+      <app-btn typeBtn="submit" color="success" [loading]="status === 'loading'">Enviar</app-btn>
+    </div>
+  </form>
+</div>

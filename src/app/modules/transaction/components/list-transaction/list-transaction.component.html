@@ -1,0 +1,36 @@
+<table class="table custom-table w-full mt-3">
+  <thead>
+    <tr class="bg-indigo-500 text-white text-left">
+      <th class="p-2"></th>
+      <th class="p-2">#</th>
+      <th class="p-2">ID Transacción</th>
+      <th class="p-2">Fecha</th>
+      <th class="p-2">Número</th>
+      <th class="p-2">Valor</th>
+      <th class="p-2">Estado</th>
+      <th class="p-2">Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (transaction of transactionProviderService.filteredTransactions(); track $index) {
+      <tr class="hover:bg-indigo-50" (dblclick)="handleShowTransaction(transaction)">
+        <td class="p-2"></td>
+        <td class="p-2">{{ $index + 1 }}</td>
+        <td class="p-2 font-semibold">{{ transaction.transactionId }}</td>
+        <td class="p-2">{{ transaction.ticket.body.Fecha }} {{ transaction.ticket.body.Hora }}</td>
+        <td class="p-2">{{ transaction.ticket.body.Numero }}</td>
+        <td class="p-2 text-green-600 font-bold">{{ transaction.ticket.body.Valor }}</td>
+        <td class="p-2">{{ transaction.message }}</td>
+        <td class="p-2">
+          <icon-button [icon]="showIcon" color="text-indigo-500" (click)="handleShowTransaction(transaction)" />
+        </td>
+      </tr>
+    } @empty {
+      <tr>
+        <td colspan="8" class="text-center bg-indigo-100 p-2 font-semibold text-black">
+          No hay transacciones que mostrar
+        </td>
+      </tr>
+    }
+  </tbody>
+</table>

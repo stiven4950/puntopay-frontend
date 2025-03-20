@@ -1,0 +1,52 @@
+<logo/>
+<h1 class="text-center py-2 mb-2 text-2xl">Inicia Sesión</h1>
+<form [formGroup]="formLogin" novalidate class="space-y-4" (ngSubmit)="doLogin()">
+  <div>
+    <input #nameInput formControlName="username" placeholder="Ingresa el email" type="email"
+      class="w-full form-control" />
+    @if (username.touched && username.invalid) {
+      @if (username.hasError('required')) {
+        <p class="font-medium text-red-500 text-xs mt-1 ml-1">
+          Este campo es requerido
+        </p>
+      }
+      @if (username.hasError('username')) {
+        <p class="font-medium text-red-500 text-xs mt-1 ml-1">
+          Este campo debe ser un email
+        </p>
+      }
+    }
+  </div>
+  <div>
+    <div class="relative">
+      <input formControlName="password" placeholder="Ingresa la contraseña" [type]="showPassword ? 'text' : 'password'"
+        class="w-full form-control pr-10" />
+      <button type="button" class="absolute right-2 top-1/2 transform -translate-y-1/2 p-2"
+        (click)="showPassword = !showPassword">
+        <fa-icon [icon]="showPassword ? faEye : faEyeSlash"></fa-icon>
+      </button>
+    </div>
+
+    @if (status ==='failed') {
+        <p class="font-medium text-red-500 text-xs mt-1 ml-1">
+          Credenciales incorrectas
+        </p>
+      }
+
+      @if (password.touched && password.invalid) {
+        @if (password.hasError('required')) {
+          <p class="font-medium text-red-500 text-xs mt-1 ml-1">
+            Este campo es requerido
+          </p>
+        }
+        @if (password.hasError('minlength')) {
+          <p class="font-medium text-red-500 text-xs mt-1 ml-1">
+            Este campo debe tener más de 8 caracteres
+          </p>
+        }
+    }
+  </div>
+  <div>
+    <app-btn typeBtn="submit" color="success" [loading]="status === 'loading'">Entra</app-btn>
+  </div>
+</form>

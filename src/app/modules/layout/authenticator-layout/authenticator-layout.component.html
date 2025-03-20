@@ -1,0 +1,6 @@
+<div class="w-screen h-screen bg-indigo-500 flex justify-center items-center">
+  <div class="w-full sm:w-7/12 md:w-6/12 lg:w-4/12">
+    <router-outlet />
+  </div>
+  <toast [show]="toasProviderService.show()" [message]="toasProviderService.message()" />
+</div>

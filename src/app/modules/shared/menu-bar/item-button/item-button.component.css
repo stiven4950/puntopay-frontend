@@ -1,0 +1,13 @@
+.item-button {
+  display: block;
+  position: relative;
+  padding: 10px 0px;
+  color: white;
+  font-weight: 500;
+  font-size: medium;
+  cursor: pointer;
+}
+
+.item-button.active, .item-button:hover {
+  background-color: rgb(132, 134, 251);
+}

@@ -1,0 +1,13 @@
+<div class="min-w-[200px] content bg-indigo-500 pt-4">
+  <div class="flex justify-center items-center w-20 h-20 bg-indigo-50 mx-auto rounded-full mb-4 shadow-sm">
+    <fa-icon [icon]="profileIcon" class="text-2xl text-indigo-500"></fa-icon>
+  </div>
+  <item-navigation [icon]="buyRechargeIcon" name="Recargas" route="/app" />
+  <item-navigation [icon]="rechargeIcon" name="Paquetes" route="/app/phone-packages" />
+  <item-navigation [icon]="rechargeHistoryIcon" name="Consultas" route="/app/transaction" />
+
+  <hr class="text-white my-3" />
+
+  <item-navigation [icon]="configurationIcon" name="Configuración" route="/app/configuration" />
+  <item-button [icon]="logoutIcon" name="Salir" (click)="logout()" />
+</div>
